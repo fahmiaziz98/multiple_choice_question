@@ -1,3 +1,9 @@
 # MCQs
 
-I built this project based on this [paper](https://www.sciencedirect.com/science/article/pii/S0957417422014014#s0015)
+**Note**:I built this project based on this [paper](https://www.sciencedirect.com/science/article/pii/S0957417422014014#s0015)
+## Overview
+This research focuses on automating the generation of multiple-choice questions (MCQs) using Transformer-based language models. The primary goal is to support educators in the reading comprehension (RC) assessment process, with the expectation of reducing their routine workload. This approach allows teachers to dedicate more time to direct interaction with students during face-to-face classes. The study tackles the challenge of multiple-choice questionnaire generation from three key perspectives: Question Generation (QG), Question Answering (QA), and Distractor Generation (DG). The proposed end-to-end pipeline utilizes a pre-trained T5 language model tailored for QG and QA tasks. Additionally, a smaller version of the T5 model with 60 million parameters is adapted for the DG task. The formulation of the distractor generation problem involves the Text-To-Text approach, training the T5 model on the "generate distractor" task. This task incorporates inputs such as the question, correct answer, and context text to produce the corresponding outlier text. As a complement, a simple API and a demo web application are developed to visualize the generated multiple-choice questions, enhancing interactive material comprehension for both educators and students.
+
+## Pipeline
+This proposal is a sequential processing based on T5 language model to generate multiple choice questions from paragraphs. This pipeline consists of four processes or steps namely input context, generate QA, generate Distractor and prepare questionare. for now I am ignoring the compute similarity pipeline as the model still performs below standard
+![pipeline](https://ars.els-cdn.com/content/image/1-s2.0-S0957417422014014-gr1.jpg)
