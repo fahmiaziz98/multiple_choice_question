@@ -17,11 +17,14 @@ To generate QA pairs, a model called QAPModel (Question/Answer Pairs Model) is u
 ## Pipeline Distractor
 DGModel incrementally takes each question and correct answer pair from the previous step and together with the paragraph (context information), generates a list of incorrect answers (distractors). For this task, a model called DGModel is proposed, which is based on a single T5 language model, customised to convert correct answers into incorrect answers by using the question and its associated context.
 
-One of the challenges in training a distractor generation model is the data set to be used, for this purpose, we used DG-RACE, on the data we tried to make three incorrect columns into one by the addition of the token `sep` as a separator so that the model generates 3 distractors but during the fine tuning process the model performed poorly and in the end I chose only one distractor. 
+One of the challenges in training a distractor generation model is the data set to be used, for this purpose, I used DG-RACE, on the data we tried to make three incorrect columns into one by the addition of the token `sep` as a separator so that the model generates 3 distractors but during the fine tuning process the model performed poorly and in the end I chose only one distractor. 
 
 ![distractor](https://ars.els-cdn.com/content/image/1-s2.0-S0957417422014014-gr5.jpg)
 
 ## Result
-We built a simple user interface using streamlit where the user just enters the context information and sets how many questions to create. 
+I created a simple user interface using streamlit where the user just enters context information and specifies how many questions to create.
 
-![Animated GIF](gif/Apex_1700393642822.gif)
+![ui](images/ui_1.png)
+![ui](images/ui_2.png)
+
+**Note**: although this project is far from perfect, I feel very satisfied with my own work and thank you for visiting my repo.
