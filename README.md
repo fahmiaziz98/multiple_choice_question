@@ -10,11 +10,9 @@ This proposal is a sequential processing based on T5 language model to generate 
 ![pipeline](https://ars.els-cdn.com/content/image/1-s2.0-S0957417422014014-gr1.jpg)
 
 ### Pipeline QA
-When the user provides the context and the number of questions to be created, it will automatically divide the context according to the desired number. 
+When the user provides the context and the number of questions to be created, it will automatically divide the context according to the desired number. To generate QA pairs, a model called QAPModel (Question/Answer Pairs Model) is used. When training the model, a special token `sep` is used to separate the parts to be predicted and a token `MASK` is used instead of the target answer when we do not want to perform question generation that considers the answer. In other words, the `sep` token is used as a separator between answer and context, while the `MASK` token is used as a representation of the answer to be changed or hidden. you can see it on the [notebook](https://github.com/fahmiaziz98/multiple_choice_question/blob/main/notebook/T5_MultiTask_QA_Generation.ipynb)
 
-To generate QA pairs, a model called QAPModel (Question/Answer Pairs Model) is used. When training the model, a special token `sep` is used to separate the parts to be predicted and a token `MASK` is used instead of the target answer when we do not want to perform question generation that considers the answer. In other words, the `sep` token is used as a separator between answer and context, while the `MASK` token is used as a representation of the answer to be changed or hidden. you can see it on the [notebook](https://github.com/fahmiaziz98/multiple_choice_question/blob/main/notebook/T5_MultiTask_QA_Generation.ipynb)
-
-## Pipeline Distractor
+### Pipeline Distractor
 DGModel incrementally takes each question and correct answer pair from the previous step and together with the paragraph (context information), generates a list of incorrect answers (distractors). For this task, a model called DGModel is proposed, which is based on a single T5 language model, customised to convert correct answers into incorrect answers by using the question and its associated context.
 
 One of the challenges in training a distractor generation model is the data set to be used, for this purpose, I used DG-RACE, on the data we tried to make three incorrect columns into one by the addition of the token `sep` as a separator so that the model generates 3 distractors but during the fine tuning process the model performed poorly and in the end I chose only one distractor. 
